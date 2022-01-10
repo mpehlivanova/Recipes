@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cook</title>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/header.css">
+
+    <style></style>
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <img src="assets/img/logo.png" alt="photo" />
+        </div>
+        <div id="menu">
+            <button><a href="#allReceptPage">Всички рецепти</a></button>
+            <button><a href="#favoriteReceptPage">Любими рецепти</a></button>
+            <button><a href="#createReceptPage">Създай рецепта</a></button>
+            <button><a href="#myProfilPage">Моят профил</a></button>
+            <!-- <button><a href="#errorPage">Error Page</a></button> -->
+        </div>
+        <div id="login">
+            <img id="headerImg" src="assets/img/guest.png" alt="photo" />
+        </div>
+    </header>
+    <main id="main">
+        <div id="all">
+            <div id="search">
+                <div>
+                    <label for="">Търси по име на рецепта:</label>
+                    <input id="inputName" type="text" />
+                </div>
+
+                <div>
+                    <label for="">Търси по съставки:</label>
+                    <select name="" id="select">
+              <option value="">Всички съставки</option>
+            </select>
+                </div>
+            </div>
+            <div id="allCards">
+                <!-- <div id="oneCard">
+                    <img src="http://img.recipepuppy.com/5.jpg" alt="photo">
+                    <h3>Potato and Cheese Frittata</h3>
+                    <p>cheddar cheese, eggs, olive oil, onions, potato, salt</p>
+                    <div id="cardButton">
+                        <button class="receptButton">добави в любими</button>
+                        <button class="receptButton">сготви</button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div id="favorite">Любими рецепти</div>
+        <div id="create">
+            <h2>Създавне на нова рецепта</h2>
+            <form action="" method="post" id="createRecepta">
+                <table id="tableCreateRecepta">
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Добави име на рецептата" name="" class="createReceptaForm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea name="" placeholder="Добави съставки на рецептата" class="createReceptaForm" cols="35" rows="4"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="url" placeholder="Добави линк към подобна рецепта-url" name="" class="createReceptaForm" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="url" placeholder="Добави снимка-url" name="" class="createReceptaForm" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" id="addReceptaBtn" class="submit" value="Добави рецепта" disabled="disabled" />
+                            <!-- <input type=" submit " id="eddReceptaBtn " class="submit " value="Редактирай рецепта " /> -->
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div id="myProfil">
+            <div id="editProfil"></div>
+            <img id="myProfilPhoto" src="assets/img/guest.png" alt="Poho profil" width="100px" />
+            <h2>Моят профил</h2>
+            <form action="" id="formProfil">
+                <table id="tableMyProfil">
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Твоето име" name="" id="profilName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="number" placeholder="Твоите години" name="" id="profilAge" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Адрес " name=" " id="profilAddress" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="url" placeholder="Добави снимка-url" name="" id="profilPhoto" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" class="submit" value="Създай профил " id="creatProfilBtn" disabled="disabled" />
+                            <input type="submit" class="submit" value="Редактирай профил " id="editProfilBtn" disabled="disabled" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <h2>Моите сготвени ястия</h2>
+            <div id="tableCookRecept">
+                <table id="tableCook"></table>
+            </div>
+        </div>
+        <div id="error">Error Page</div>
+    </main>
+    <footer>
+        <p>Webside create by Mariela Pehlivanova</p>
+        <p>All Rights Reserved &copy; 2021</p>
+    </footer>
+    <script src="assets/allReceptTask.js"></script>
+    <script src="assets/model/recepta.js"></script>
+    <script src="assets/model/user.js"></script>
+    <script src="assets/model/managerRecepti.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

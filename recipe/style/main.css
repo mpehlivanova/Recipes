@@ -1,0 +1,193 @@
+            #main {
+                width: 100%;
+            }
+            
+            #main>div {
+                width: 100%;
+                height: 85vh;
+                padding-top: 11vh;
+            }
+            
+            #create,
+            #myProfil,
+            #all {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            #tableCookRecept {
+                padding-bottom: 100px;
+            }
+            
+            #all {
+                display: flex;
+                gap: 25px;
+                padding-top: 30vh;
+                flex-direction: column;
+            }
+            
+            #favorite {
+                display: flex;
+                flex-direction: row;
+                gap: 25px;
+                flex-wrap: wrap;
+                margin-left: 100px;
+                padding-bottom: 100px;
+            }
+            
+            #search {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                flex-direction: row;
+            }
+            
+            #menu {
+                display: flex;
+                gap: 25px;
+            }
+            
+            #allRecept {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            #cardButton {
+                padding: 10px;
+            }
+            
+            #cookButton {
+                width: 70px;
+                margin-bottom: 0px;
+                bottom: 200px;
+            }
+            
+            #addLikeButton {
+                width: 130px;
+                background-color: rgb(250, 188, 131);
+                border-radius: 10px;
+            }
+            
+            #cookButton:hover {
+                background-color: rgb(245, 94, 7);
+                cursor: pointer;
+            }
+            
+            #addLikeButton:hover {
+                background-color: rgb(245, 94, 7);
+                cursor: pointer;
+            }
+            
+            #cookButton {
+                width: 80px;
+                background-color: rgb(250, 188, 131);
+                border-radius: 10px;
+                height: 30px;
+            }
+            
+            #cardButton {
+                display: flex;
+                gap: 10px;
+            }
+            
+            #oneCard>h3,
+            p {
+                text-align: center;
+            }
+            
+            #allCards {
+                display: flex;
+                flex-direction: row;
+                gap: 25px;
+                flex-wrap: wrap;
+                margin-left: 200px;
+                padding-bottom: 100px;
+            }
+            
+            #oneCard {
+                display: flex;
+                gap: 1px;
+                flex-direction: column;
+                flex-basis: 10%;
+                /* align-items: baseline; */
+                border: 2px darkgrey solid;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 10px;
+                height: 350px;
+            }
+            
+            table>tr,
+            td {
+                padding: 5px;
+            }
+            
+            a>img {
+                width: 240px;
+                height: 200px;
+                border-radius: 9px 9px 0px 0px;
+            }
+            
+            #divCooknumber {
+                width: 20px;
+                height: 20px;
+                background-color: cornflowerblue;
+            }
+            
+            #tableCook {
+                border: 1px solid black;
+                width: 200px;
+                height: 50px;
+            }
+            
+            #create>h2 {
+                margin-top: 30px;
+                padding: 10px;
+            }
+            
+            input {
+                width: 275px;
+                height: 20px;
+            }
+            
+            .submit {
+                width: 140px;
+                height: 30px;
+                border-radius: 10px;
+            }
+            
+            .submit:hover {
+                background-color: rgb(126, 126, 126);
+                cursor: pointer;
+            }
+            
+            #inputName {
+                width: 150px;
+                height: 15px;
+            }
+            
+            #tableCook tr td {
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                height: 50px;
+                padding: 5px;
+            }
+            
+            th {
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                height: 30px;
+                background-color: rgb(250, 188, 131);
+                padding: 10px;
+            }
+            
+            #tableCook {
+                width: 400px;
+            }
+            
+            td p img {
+                margin-bottom: 10px;
+            }
