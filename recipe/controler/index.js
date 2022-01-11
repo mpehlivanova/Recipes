@@ -73,39 +73,53 @@
     //debugger;
 
     // създаване на рецепта
+
+    let recepts = document.getElementById("cardRecepti").innerHTML;
+
+
+
+
     function printRecepti(recepti, conteiner) {
+        let template = Handlebars.compile(recepts);
         conteiner.innerHTML = "";
         for (let i = recepti.length - 1; i >= 0; i--) {
+
+            // let recepta = recepti[i];
+
+            // let card = document.createElement("div");
+            // card.id = "oneCard";
+
+            // let img = document.createElement("img");
+            // img.src = recepta.thumbnail;
+            // img.alt = "photo";
+
+            // let link = document.createElement("a");
+            // link.href = recepta.href;
+
+            // link.append(img)
+
+            // let h3 = document.createElement("h3");
+            // h3.innerHTML = recepta.title;
+
+
+            // let p = document.createElement("p");
+            // p.innerText = recepta.ingredients;
+
+            // let cardButton = document.createElement("div");
+            // cardButton.id = "cardButton";
+
+            // let buttonFavorite = document.createElement("button");
+
+            // buttonFavorite.id = "addLikeButton";
             let recepta = recepti[i];
-
-            let card = document.createElement("div");
-            card.id = "oneCard";
-
-            let img = document.createElement("img");
-            img.src = recepta.thumbnail;
-            img.alt = "photo";
-
-            let link = document.createElement("a");
-            link.href = recepta.href;
-
-            link.append(img)
-
-            let h3 = document.createElement("h3");
-            h3.innerHTML = recepta.title;
-
-
-            let p = document.createElement("p");
-            p.innerText = recepta.ingredients;
-
-            let cardButton = document.createElement("div");
-            cardButton.id = "cardButton";
-
-            let buttonFavorite = document.createElement("button");
-
-            buttonFavorite.id = "addLikeButton";
+            let htmlRecept = template(recepta);
+            conteiner.innerHTML += htmlRecept;
+            let buttonFavorite = document.getElementById("addLikeButton");
+            // debugger;
             if (user.isLike(recepta)) {
                 buttonFavorite.innerText = "Премахни от любими";
                 buttonFavorite.addEventListener("click", function() {
+                    debugger;
                     user.unlike(recepta);
                     hasChangePage();
                 });
@@ -116,11 +130,12 @@
                     hasChangePage();
                 });
             }
-            let buttonCook = document.createElement("button");
-            buttonCook.classList.add = "receptButton";
-            buttonCook.id = "cookButton";
+            // let buttonCook = document.createElement("button");
+            // buttonCook.classList.add = "receptButton";
+            // buttonCook.id = "cookButton";
 
-            buttonCook.innerText = "Сготви";
+            // buttonCook.innerText = "Сготви";
+            let buttonCook = document.getElementById("cookButton");
             buttonCook.addEventListener("click", function() {
                 user.cook(recepta);
                 recepta.cook++;
@@ -129,9 +144,9 @@
             });
 
 
-            cardButton.append(buttonFavorite, buttonCook);
-            card.append(link, h3, p, cardButton);
-            conteiner.append(card);
+            // cardButton.append(buttonFavorite, buttonCook);
+            // card.append(link, h3, p, cardButton);
+            // conteiner.append(card);
 
         }
     }
@@ -200,10 +215,10 @@
 
         myProfilPhoto.setAttribute("src", img);
         editProfil.innerHTML = `
-        <tr><td><h3>Име: ${name}</h3></td></tr>
-        <tr><td><p>Години: ${age}</p></td></tr>
-        <tr><td><p>Адрес: ${address}</p></td></tr>
-        `
+                   <tr><td><h3>Име: ${name}</h3></td></tr>
+                   <tr><td><p>Години: ${age}</p></td></tr>
+                   <tr><td><p>Адрес: ${address}</p></td></tr>
+                   `
         checkProfil(name, age, address, img, button);
 
 

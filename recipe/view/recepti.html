@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>cook</title>
-    <link rel="stylesheet" href="style/reset.css">
-    <link rel="stylesheet" href="style/footer.css">
-    <link rel="stylesheet" href="style/main.css">
-    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
 
     <style></style>
 </head>
@@ -51,13 +51,13 @@
                     <h3>Potato and Cheese Frittata</h3>
                     <p>cheddar cheese, eggs, olive oil, onions, potato, salt</p>
                     <div id="cardButton">
-                        <button class="receptButton">добави в любими</button>
-                        <button class="receptButton">сготви</button>
+                        <button id="addLikeButton">добави в любими</button>
+                        <button id="cookButton">сготви</button>
                     </div>
                 </div> -->
             </div>
         </div>
-        <div id="favorite">Любими рецепти</div>
+        <div id="favorite"></div>
         <div id="create">
             <h2>Създавне на нова рецепта</h2>
             <form action="" method="post" id="createRecepta">
@@ -119,8 +119,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="submit" class="submit" value="Създай профил " id="creatProfilBtn" disabled="disabled" />
-                            <input type="submit" class="submit" value="Редактирай профил " id="editProfilBtn" disabled="disabled" />
+                            <input type="submit" class="submit" value="Създай профил" id="creatProfilBtn" disabled="disabled" />
+                            <input type="submit" class="submit" value="Редактирай профил" id="editProfilBtn" disabled="disabled" />
                         </td>
                     </tr>
                 </table>
@@ -137,11 +137,24 @@
         <p>Webside create by Mariela Pehlivanova</p>
         <p>All Rights Reserved &copy; 2021</p>
     </footer>
-    <script src="assets/allReceptTask.js"></script>
-    <script src="assets/model/recepta.js"></script>
-    <script src="assets/model/user.js"></script>
-    <script src="assets/model/managerRecepti.js"></script>
-    <script src="index.js"></script>
+    <script id="cardRecepti" type="text/x-handlebars-template">
+        <div id="oneCard">
+            <a href="http://allrecipes.com/Recipe/Champagne-Punch-II/Detail.aspx">
+                <img src={{thumbnail}} alt="photo"></a>
+            <h3>{{title}}</h3>
+            <p>{{ingredients}}</p>
+            <div id="cardButton">
+                <button id="addLikeButton">добави в любими</button>
+                <button id="cookButton">сготви</button>
+            </div>
+        </div>
+    </script>
+    <script src="../../logs/node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="../model/allReceptTask.js"></script>
+    <script src="../model/recepta.js"></script>
+    <script src="../model/user.js"></script>
+    <script src="../model/managerRecepti.js"></script>
+    <script src="../controler/index.js"></script>
 </body>
 
 </html>
