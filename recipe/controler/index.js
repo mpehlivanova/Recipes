@@ -1,297 +1,238 @@
-(function() {
+let userRecept = new UserRecept();
+let manager = new ManagerRecepti();
+let check = new Check();
+for (let i = 0; i < inputOfAllRecipes.length; i++) {
+    let obj = inputOfAllRecipes[i];
+    let recepta = new Recepta(
+        obj.href,
+        obj.ingredients,
+        obj.thumbnail,
+        obj.title
+    );
+    manager.add(recepta);
+}
 
-    let all = document.getElementById("all");
-    let favorite = document.getElementById("favorite");
-    let create = document.getElementById("create");
-    let profil = document.getElementById("myProfil");
-    let error = document.getElementById("error");
-    let allCard = document.getElementById("allCards");
+// console.log(manager.recepti);
 
-    let user = new User();
-    let manager = new ManagerRecepti();
-    for (let i = 0; i < inputOfAllRecipes.length; i++) {
-        let obj = inputOfAllRecipes[i];
-        let recepta = new Recepta(
-            obj.href,
-            obj.ingredients,
-            obj.thumbnail,
-            obj.title
-        );
-        manager.add(recepta);
-    }
+// създаване на рецепта
+//............tempalyt...........?
+// let recepts = document.getElementById("cardRecepti").innerHTML;
+//............tempalyt...........?
 
-    console.log(manager.recepti);
+function printRecepti(recepti, conteiner) {
+    //............tempalyt...........
+    // let template = Handlebars.compile(recepts);
+    //............tempalyt...........
+    conteiner.innerHTML = "";
+    for (let i = recepti.length - 1; i >= 0; i--) {
 
-    //рутер
+        let recepta = recepti[i];
 
-    let hasChangePage = function() {
-        let hash = location.hash.slice(1);
-        switch (hash) {
-            case "allReceptPage":
-                all.style.display = "flex";
-                favorite.style.display = "none";
-                create.style.display = "none";
-                profil.style.display = "none";
-                error.style.display = "none";
-                printRecepti(manager.recepti, allCard);
-                break;
-            case "favoriteReceptPage":
-                all.style.display = "none";
-                favorite.style.display = "flex";
-                create.style.display = "none";
-                profil.style.display = "none";
-                error.style.display = "none";
-                printRecepti(user.liked, favorite);
-                break;
-            case "createReceptPage":
-                all.style.display = "none";
-                favorite.style.display = "none";
-                create.style.display = "flex";
-                profil.style.display = "none";
-                error.style.display = "none";
-                break;
-            case "myProfilPage":
-                all.style.display = "none";
-                favorite.style.display = "none";
-                create.style.display = "none";
-                profil.style.display = "flex";
-                error.style.display = "none";
+        let card = createElement("div");
+        card.id = "oneCard";
 
-                break;
-            default:
-                all.style.display = "flex";
-                favorite.style.display = "none";
-                create.style.display = "none";
-                profil.style.display = "none";
-                error.style.display = "none";
-                printRecepti(manager.recepti, allCard);
-                break;
-        }
-    };
-    window.addEventListener("load", hasChangePage);
-    window.addEventListener("hashchange", hasChangePage);
-    //debugger;
+        let img = createElement("img");
+        img.src = recepta.thumbnail;
+        img.alt = "photo";
 
-    // създаване на рецепта
+        let link = createElement("a");
+        link.href = recepta.href;
 
-    let recepts = document.getElementById("cardRecepti").innerHTML;
+        link.append(img)
+
+        let h3 = createElement("h3");
+        h3.innerHTML = recepta.title;
 
 
+        let p = createElement("p");
+        p.innerText = recepta.ingredients;
 
+        let cardButton = createElement("div");
+        cardButton.id = "cardButton";
 
-    function printRecepti(recepti, conteiner) {
-        let template = Handlebars.compile(recepts);
-        conteiner.innerHTML = "";
-        for (let i = recepti.length - 1; i >= 0; i--) {
+        let buttonFavorite = createElement("button");
 
-            // let recepta = recepti[i];
+        buttonFavorite.id = "addLikeButton";
+        //............tempalyt...........
+        // let recepta = recepti[i];
+        // let htmlRecept = template(recepta);
+        // conteiner.innerHTML += htmlRecept;
+        // let buttonFavorite = document.getElementById("addLikeButton");
+        //............tempalyt...........
 
-            // let card = document.createElement("div");
-            // card.id = "oneCard";
-
-            // let img = document.createElement("img");
-            // img.src = recepta.thumbnail;
-            // img.alt = "photo";
-
-            // let link = document.createElement("a");
-            // link.href = recepta.href;
-
-            // link.append(img)
-
-            // let h3 = document.createElement("h3");
-            // h3.innerHTML = recepta.title;
-
-
-            // let p = document.createElement("p");
-            // p.innerText = recepta.ingredients;
-
-            // let cardButton = document.createElement("div");
-            // cardButton.id = "cardButton";
-
-            // let buttonFavorite = document.createElement("button");
-
-            // buttonFavorite.id = "addLikeButton";
-            let recepta = recepti[i];
-            let htmlRecept = template(recepta);
-            conteiner.innerHTML += htmlRecept;
-            let buttonFavorite = document.getElementById("addLikeButton");
-            // debugger;
-            if (user.isLike(recepta)) {
-                buttonFavorite.innerText = "Премахни от любими";
-                buttonFavorite.addEventListener("click", function() {
-                    debugger;
-                    user.unlike(recepta);
-                    hasChangePage();
-                });
-            } else {
-                buttonFavorite.innerText = "Добави в любими";
-                buttonFavorite.addEventListener("click", function() {
-                    user.like(recepta);
-                    hasChangePage();
-                });
-            }
-            // let buttonCook = document.createElement("button");
-            // buttonCook.classList.add = "receptButton";
-            // buttonCook.id = "cookButton";
-
-            // buttonCook.innerText = "Сготви";
-            let buttonCook = document.getElementById("cookButton");
-            buttonCook.addEventListener("click", function() {
-                user.cook(recepta);
-                recepta.cook++;
-                cookRecept();
+        if (userRecept.isLike(recepta)) {
+            buttonFavorite.innerText = "Премахни от любими";
+            buttonFavorite.addEventListener("click", function() {
+                userRecept.unlike(recepta);
                 hasChangePage();
             });
-
-
-            // cardButton.append(buttonFavorite, buttonCook);
-            // card.append(link, h3, p, cardButton);
-            // conteiner.append(card);
-
+        } else {
+            buttonFavorite.innerText = "Добави в любими";
+            buttonFavorite.addEventListener("click", function() {
+                userRecept.like(recepta);
+                hasChangePage();
+            });
         }
-    }
-    // таблица със сготвени ястия
-    function cookRecept() {
-        let tableCook = document.getElementById("tableCook");
+        let cookButton = createElement("button");
+        cookButton.classList.add = "receptButton";
+        cookButton.id = "cookButton";
+        cookButton.innerText = "Сготви";
+        cookButton.addEventListener("click", function() {
+            userRecept.cook(recepta);
+            recepta.cook++;
+            cookRecept();
+            hasChangePage();
+        });
 
-        tableCook.innerHTML = `<tr>
+
+        cardButton.append(buttonFavorite, cookButton);
+        card.append(link, h3, p, cardButton);
+        conteiner.append(card);
+
+    }
+}
+// таблица със сготвени ястия - tempalyt?
+function cookRecept() {
+    let tableCook = getById("tableCook");
+
+    tableCook.innerHTML = `<tr>
         <th>Име на сготвените ястия</th>
         <th>Брой готвения</th>
         <th>Снимка</th>
         </tr>`;
-        for (let i = 0; i < user.cooked.length; i++) {
-            let tr = document.createElement("tr");
-            tableCook.appendChild(tr);
-            tr.innerHTML = `
-                <td>${user.cooked[i].title}</td>
-                <td>${user.cooked[i].cook}</td>
-                <td><img src=${user.cooked[i].thumbnail} alt="photo" width="50px"</td>
+    for (let i = 0; i < userRecept.cooked.length; i++) {
+        let tr = createElement("tr");
+        tableCook.appendChild(tr);
+        tr.innerHTML = `
+                <td>${userRecept.cooked[i].title}</td>
+                <td>${userRecept.cooked[i].cook}</td>
+                <td><img src=${userRecept.cooked[i].thumbnail} alt="photo" width="50px"</td>
             `
-        }
     }
+}
 
-    // филтър по име на рецепта
-    let filter = document.getElementById("inputName")
-    filter.addEventListener("keyup", function(ev) {
-        let text = ev.target.value;
-        let filterd = manager.filter(text);
-        printRecepti(filterd, allCard)
-    });
+// филтър по име на рецепта
+let filter = getById("inputName")
+filter.addEventListener("keyup", function(ev) {
+    let text = ev.target.value;
+    let filterd = manager.filter(text);
+    printRecepti(filterd, allCard)
+});
 
-    // филтър съставки
+// филтър съставки
 
-    let select = document.getElementById("select")
-    select.addEventListener("click", function() {
-        manager.filterIng();
-    });
-    //debugger;
+let select = getById("select");
+let addAllIngInSelection = false;
+select.addEventListener("click", function() {
 
-    select.addEventListener("change", function(ev) {
-        let index = ev.target.selectedIndex
-        if (ev.target.options[index].text === "Всички съставки") {
-            printRecepti(manager.recepti, allCard)
-        } else {
-            let option = ev.target.options[index].text;
-            let rezult = manager.filterSelectRecepti(option);
-            // let rezult = manager.recepti.filter(e => e.ingredients.includes(option));
-            printRecepti(rezult, allCard);
-        }
-    });
-
-    // създаване на профил
-    function createProfil() {
-        let button = document.getElementById("creatProfilBtn");
-        let editProfil = document.getElementById("editProfil");
-        editProfil.innerHTML = "";
-
-        let name = document.getElementById("profilName").value.trim();
-        let age = document.getElementById("profilAge").value.trim();
-        let address = document.getElementById("profilAddress").value.trim();
-        let img = document.getElementById("profilPhoto").value.trim();
-
-        let headerImg = document.getElementById("headerImg");
-        headerImg.setAttribute("src", img);
-        let myProfilPhoto = document.getElementById("myProfilPhoto");
-
-        myProfilPhoto.setAttribute("src", img);
-        editProfil.innerHTML = `
-                   <tr><td><h3>Име: ${name}</h3></td></tr>
-                   <tr><td><p>Години: ${age}</p></td></tr>
-                   <tr><td><p>Адрес: ${address}</p></td></tr>
-                   `
-        checkProfil(name, age, address, img, button);
-
-
+    if (!addAllIngInSelection) {
+        let ing = manager.filterIng();
+        ing.forEach(element => {
+            let option = createElement("option")
+            option.innerHTML = element;
+            select.appendChild(option);
+        });
     }
-    // редактране на профил
-    function editProfil() {
-        let editProfil = document.getElementById("editProfil");
-        let name = document.getElementById("profilName").value = "";
-        let age = document.getElementById("profilAge").value = "";
-        let address = document.getElementById("profilAddress").value = "";
-        let img = document.getElementById("profilPhoto").value = "";
-        editProfil.innerHTML = `
-        <tr><td><h3>Име: ${name}</h3></td></tr>
-        <tr><td><p>Години: ${age}</p></td></tr>
-        <tr><td><p>Адрес: ${address}</p></td></tr>
-        <tr><td><p>Адрес: ${img}</p></td></tr>
-        `
+    addAllIngInSelection = true;
+});
 
+select.addEventListener("change", function(ev) {
+    let index = ev.target.selectedIndex
+    if (ev.target.options[index].text === "Всички съставки") {
+        printRecepti(manager.recepti, allCard)
+    } else {
+        let option = ev.target.options[index].text;
+        let rezult = manager.filterSelectRecepti(option);
+        // let rezult = manager.recepti.filter(e => e.ingredients.includes(option));
+        printRecepti(rezult, allCard);
     }
+});
+
+// // създаване на профил
+// function createProfil() {
+//     let button = getById("creatProfilBtn");
+//     let loginProfilBtn = getById("editProfil");
+//     loginProfilBtn.innerHTML = "";
+
+//     let name = getById("profilName").value.trim();
+//     let age = getById("profilAge").value.trim();
+//     let address = getById("profilAddress").value.trim();
+//     let img = getById("profilPhoto").value.trim();
+
+//     let headerImg = getById("headerImg");
+//     headerImg.setAttribute("src", img);
+//     let myProfilPhoto = getById("myProfilPhoto");
+
+//     myProfilPhoto.setAttribute("src", img);
+//     editProfil.innerHTML = `
+//                    <tr><td><h3>Име: ${name}</h3></td></tr>
+//                    <tr><td><p>Години: ${age}</p></td></tr>
+//                    <tr><td><p>Адрес: ${address}</p></td></tr>
+//                    `
+//     checkProfil(name, age, address, img, button);
 
 
-    let formProfil = document.getElementById("formProfil");
-    formProfil.addEventListener("keyup", function() {
-        let buttonCreat = document.getElementById("creatProfilBtn");
-        let buttonEdit = document.getElementById("editProfilBtn");
-        let name = document.getElementById("profilName").value.trim();
-        let age = document.getElementById("profilAge").value.trim();
-        let address = document.getElementById("profilAddress").value.trim();
-        let img = document.getElementById("profilPhoto").value.trim();
-        manager.checkProfil(name, age, address, img, buttonCreat);
-        manager.checkProfil(name, age, address, img, buttonEdit);
+// }
+// редактране на профил
+// function editProfil() {
+//     let editProfil = getById("editProfil");
+//     let name = getById("profilName").value = "";
+//     let age = getById("profilAge").value = "";
+//     let address = getById("profilAddress").value = "";
+//     let img = getById("profilPhoto").value = "";
+//     editProfil.innerHTML = `
+//         <tr><td><h3>Име: ${name}</h3></td></tr>
+//         <tr><td><p>Години: ${age}</p></td></tr>
+//         <tr><td><p>Адрес: ${address}</p></td></tr>
+//         <tr><td><p>Адрес: ${img}</p></td></tr>
+//         `
+// }
 
-    });
-    let creatProfilBtn = document.getElementById("creatProfilBtn");
-    creatProfilBtn.addEventListener("click", function(ev) {
-        ev.preventDefault();
-        createProfil();
-    });
+// let registerProfil = getById("registerProfil");
+// registerProfil.addEventListener("keyup", function() {
+//     let buttonCreat = getById("creatProfilBtn");
+//     let name = getById("profilName").value.trim();
+//     let age = getById("profilAge").value.trim();
+//     let address = getById("profilAddress").value.trim();
+//     // проверка за съвпадение на двете пароли
+//     let img = getById("profilPhoto").value.trim();
+//     manager.checkProfil(name, age, address, img, buttonCreat);
 
-    let editProfilBtn = document.getElementById("editProfilBtn");
-    editProfilBtn.addEventListener("click", function(ev) {
-        ev.preventDefault();
-        editProfil();
+// });
+// let creatProfilBtn = getById("creatProfilBtn");
+// creatProfilBtn.addEventListener("click", function(ev) {
+//     ev.preventDefault();
+//     createProfil();
+// });
+// редактиране на профил
+// let editProfilBtn = document.getElementById("editProfilBtn");
+// editProfilBtn.addEventListener("click", function(ev) {
+//     ev.preventDefault();
+//     editProfil();
 
-    });
+// });
 
-    // съзадаване на рецепта
-    function submitRecepta() {
-        let addReceptaBtn = document.getElementById("addReceptaBtn");
-        let createReceptaForm = document.getElementsByClassName("createReceptaForm");
-        let newRecepta = new Recepta(
-            createReceptaForm[2].value.trim(),
-            createReceptaForm[1].value.trim(),
-            createReceptaForm[3].value.trim(),
-            createReceptaForm[0].value.trim(),
-        );
-        manager.add(newRecepta);
-        // manager.checkAddReceptaBtn(createReceptaForm, addReceptaBtn);
+// съзадаване на рецепта
+function submitRecepta() {
+    // let addReceptaBtn = getById("addReceptaBtn");
+    let createReceptaForm = getByClass("createReceptaForm");
+    let newRecepta = new Recepta(
+        createReceptaForm[2].value.trim(),
+        createReceptaForm[1].value.trim(),
+        createReceptaForm[3].value.trim(),
+        createReceptaForm[0].value.trim(),
+    );
+    manager.add(newRecepta);
+    // manager.checkAddReceptaBtn(createReceptaForm, addReceptaBtn);
+}
+//Бутона остава не актвен докато не са запълнени всички полетата 
+let addReceptaBtn = getById("addReceptaBtn");
+let formCreateRecepta = getById("createRecepta");
+formCreateRecepta.addEventListener("keyup", function() {
+    let createReceptaForm = getByClass("createReceptaForm");
+    check.isFullFilds(createReceptaForm, addReceptaBtn);
+});
 
-    }
-
-
-    let addReceptaBtn = document.getElementById("addReceptaBtn");
-    let formCreateRecepta = document.getElementById("createRecepta");
-    formCreateRecepta.addEventListener("keyup", function() {
-        let createReceptaForm = document.getElementsByClassName("createReceptaForm");
-        manager.checkAddReceptaBtn(createReceptaForm, addReceptaBtn);
-    });
-
-    addReceptaBtn.addEventListener("click", function(ev) {
-        ev.preventDefault();
-        submitRecepta();
-    });
-
-
-})();
+addReceptaBtn.addEventListener("click", function(ev) {
+    submitRecepta();
+});

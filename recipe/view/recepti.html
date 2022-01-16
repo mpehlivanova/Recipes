@@ -37,7 +37,6 @@
                     <label for="">Търси по име на рецепта:</label>
                     <input id="inputName" type="text" />
                 </div>
-
                 <div>
                     <label for="">Търси по съставки:</label>
                     <select name="" id="select">
@@ -61,100 +60,94 @@
         <div id="create">
             <h2>Създавне на нова рецепта</h2>
             <form action="" method="post" id="createRecepta">
-                <table id="tableCreateRecepta">
-                    <tr>
-                        <td>
-                            <input type="text" placeholder="Добави име на рецептата" name="" class="createReceptaForm">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <textarea name="" placeholder="Добави съставки на рецептата" class="createReceptaForm" cols="35" rows="4"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="url" placeholder="Добави линк към подобна рецепта-url" name="" class="createReceptaForm" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="url" placeholder="Добави снимка-url" name="" class="createReceptaForm" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="submit" id="addReceptaBtn" class="submit" value="Добави рецепта" disabled="disabled" />
-                            <!-- <input type=" submit " id="eddReceptaBtn " class="submit " value="Редактирай рецепта " /> -->
-                        </td>
-                    </tr>
-                </table>
+                <input type="text" placeholder="Добави име на рецептата" name="" class="createReceptaForm">
+                <textarea name="" placeholder="Добави съставки на рецептата" class="createReceptaForm" cols="35" rows="4"></textarea>
+                <input type="url" placeholder="Добави линк към подобна рецепта-url" name="" class="createReceptaForm" />
+                <input type="url" placeholder="Добави снимка-url" name="" class="createReceptaForm" />
+                <input type="submit" id="addReceptaBtn" class="submit" value="Добави рецепта" disabled="disabled" />
             </form>
         </div>
         <div id="myProfil">
-            <div id="editProfil"></div>
-            <img id="myProfilPhoto" src="assets/img/guest.png" alt="Poho profil" width="100px" />
-            <h2>Моят профил</h2>
-            <form action="" id="formProfil">
-                <table id="tableMyProfil">
-                    <tr>
-                        <td>
-                            <input type="text" placeholder="Твоето име" name="" id="profilName" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="number" placeholder="Твоите години" name="" id="profilAge" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" placeholder="Адрес " name=" " id="profilAddress" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="url" placeholder="Добави снимка-url" name="" id="profilPhoto" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="submit" class="submit" value="Създай профил" id="creatProfilBtn" disabled="disabled" />
-                            <input type="submit" class="submit" value="Редактирай профил" id="editProfilBtn" disabled="disabled" />
-                        </td>
-                    </tr>
-                </table>
-            </form>
-
-            <h2>Моите сготвени ястия</h2>
-            <div id="tableCookRecept">
-                <table id="tableCook"></table>
+            <div id="myProfilPage">
+                <h2> Здравейте,(ИМЕ) добре доши в профила си!</h2>
+                <img id="myProfilSrc" src="" alt="photo profil">
+                <h2 id="myCookRecept">Моите сготвени ястия</h2>
+                <!-- add user create recept -->
+                <div id="tableCookRecept">
+                    <table id="tableCook"></table>
+                </div>
+                <!-- add user like recept -->
+                <div id="myLikeRecept"></div>
+                <div id="myCreateRecept">
+                    <!-- add user cook recept -->
+                    <table id="tableMyCreate"></table>
+                </div>
             </div>
+            <!-- <div id=" editProfil "></div> -->
+            <div id="loginDiv">
+                <img id="myProfilPhoto" src="assets/img/guest.png" alt="Poho profil" width="100px" />
+                <h2>Влез в профила си!</h2>
+                <form action=" " method="post" id="loginProfil">
+                    <input type="text " placeholder="Твоето име " name="" id="loginName" />
+                    <input type="password" placeholder="Твоята парола" name=" " id="loginPass" />
+                    <p id="errorPassLogin"></p>
+                    <div id="buttonDiv">
+                        <input type="submit" class="submit" value="Вход" id="loginProfilBtn" disabled="disabled" />
+                        <input type="submit" class="submit" value="Регистрация" id="regisretButton" />
+                    </div>
+            </div>
+            </form>
+            <div id="registerDiv">
+                <p>Ако нямаш регистрация, попълни всички полета!</p>
+                <form action="" method="post" id="registerProfil">
+                    <input type="text" placeholder="Трите имена" name="" class="register" />
+                    <input type="number" placeholder="Твоите години" name="" class="register" />
+                    <input type="text" placeholder="Адрес " name="" class="register" />
+                    <input type="password" placeholder="Твоята парола" name="" class="register" />
+                    <input type="password" placeholder="Повтори парола" name="" class=" register" />
+                    <input type="url" placeholder="Добави снимка-url " name="" class="register" />
+                    <p id="regErrorPass"></p>
+                    <div id="buttonDiv">
+                        <input type="submit" class="submit" value="Създай профил" id="creatProfilBtn" disabled="disabled" />
+                        <!-- <input type="submit " class="submit " value="Влез в профила " id="inProfilBtn " disabled="disabled " /> -->
+                    </div>
+                </form>
+            </div>
+
         </div>
         <div id="error">Error Page</div>
+
     </main>
     <footer>
         <p>Webside create by Mariela Pehlivanova</p>
         <p>All Rights Reserved &copy; 2021</p>
     </footer>
-    <script id="cardRecepti" type="text/x-handlebars-template">
-        <div id="oneCard">
-            <a href="http://allrecipes.com/Recipe/Champagne-Punch-II/Detail.aspx">
-                <img src={{thumbnail}} alt="photo"></a>
+    <!--............tempalyt...........-->
+    <!-- <script id="cardRecepti " type="text/x-handlebars-template ">
+        <div id="oneCard ">
+            <a href="http://allrecipes.com/Recipe/Champagne-Punch-II/Detail.aspx ">
+                <img src={{thumbnail}} alt="photo "></a>
             <h3>{{title}}</h3>
             <p>{{ingredients}}</p>
-            <div id="cardButton">
-                <button id="addLikeButton">добави в любими</button>
-                <button id="cookButton">сготви</button>
+            <div id="cardButton ">
+                <button id="addLikeButton ">добави в любими</button>
+                <button id="cookButton ">сготви</button>
             </div>
         </div>
     </script>
-    <script src="../../logs/node_modules/handlebars/dist/handlebars.min.js"></script>
-    <script src="../model/allReceptTask.js"></script>
-    <script src="../model/recepta.js"></script>
-    <script src="../model/user.js"></script>
-    <script src="../model/managerRecepti.js"></script>
-    <script src="../controler/index.js"></script>
+    <script src="../../logs/node_modules/handlebars/dist/handlebars.min.js "></script> -->
+    <!--............tempalyt...........-->
+    <script src="../controler/util.js "></script>
+    <script src="../model/allReceptTask.js "></script>
+    <script src="../controler/check.js "></script>
+    <script src="../model/UserRecepta.js "></script>
+    <script src="../model/UserSrorage.js "></script>
+    <script src="../controler/controlerUser.js "></script>
+    <script src="../model/managerRecepti.js "></script>
+    <script src="../controler/index.js "></script>
+    <script src="../controler/ruter.js "></script>
+
+
 </body>
 
 </html>

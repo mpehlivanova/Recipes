@@ -178,4 +178,52 @@ let inputOfAllRecipes = [{
         "ingredients": "carbonated water, cognac, grapes, sauterne, sugar",
         "thumbnail": "http://img.recipepuppy.com/9.jpg"
     }
-]
+];
+
+// function filter(text) {
+//     let filtered = [];
+//     text = text.toLowerCase()
+//     if (typeof(text) === "string" && text.trim().length > 0) {
+//         inputOfAllRecipes.filter(e => {
+//             if (e.title.toLowerCase().includes(text)) {
+//                 filtered.push(e)
+//             }
+//         });
+//     }
+//     console.log(filtered);
+// }
+// filter("Punch");
+
+// function filterIng() {
+//     let arrIngForAllRecept = [];
+//     let ingArr = inputOfAllRecipes.map(e => {
+//         return e.ingredients.split(", ")
+//     });
+//     // console.log(ingArr);
+//     ingArr.map(e => e.forEach(ing => {
+//         arrIngForAllRecept.push(ing)
+//     }));
+
+//     console.log(arrIngForAllRecept);
+
+// }
+
+// function filterSelectRecepti(option) {
+//     let selectFilter = [];
+//     inputOfAllRecipes.map(e => {
+//         return e.ingredients.split(", ").forEach(arrIng => {
+//             if (arrIng === option) {
+//                 selectFilter.push(e);
+//             }
+//         });
+//     });
+//     console.log(selectFilter);
+
+// };
+// filterSelectRecepti("cognac");
+
+// inputOfAllRecipes.forEach(e => {
+//     e.ingredients = " ";
+
+// });
+// console.log(inputOfAllRecipes);
