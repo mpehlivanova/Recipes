@@ -12,7 +12,8 @@ for (let i = 0; i < inputOfAllRecipes.length; i++) {
     manager.add(recepta);
 }
 
-// console.log(manager.recepti);
+console.log(manager.recepti);
+console.log(manager.created);
 
 // създаване на рецепта
 //............tempalyt...........?
@@ -148,73 +149,9 @@ select.addEventListener("change", function(ev) {
     }
 });
 
-// // създаване на профил
-// function createProfil() {
-//     let button = getById("creatProfilBtn");
-//     let loginProfilBtn = getById("editProfil");
-//     loginProfilBtn.innerHTML = "";
-
-//     let name = getById("profilName").value.trim();
-//     let age = getById("profilAge").value.trim();
-//     let address = getById("profilAddress").value.trim();
-//     let img = getById("profilPhoto").value.trim();
-
-//     let headerImg = getById("headerImg");
-//     headerImg.setAttribute("src", img);
-//     let myProfilPhoto = getById("myProfilPhoto");
-
-//     myProfilPhoto.setAttribute("src", img);
-//     editProfil.innerHTML = `
-//                    <tr><td><h3>Име: ${name}</h3></td></tr>
-//                    <tr><td><p>Години: ${age}</p></td></tr>
-//                    <tr><td><p>Адрес: ${address}</p></td></tr>
-//                    `
-//     checkProfil(name, age, address, img, button);
-
-
-// }
-// редактране на профил
-// function editProfil() {
-//     let editProfil = getById("editProfil");
-//     let name = getById("profilName").value = "";
-//     let age = getById("profilAge").value = "";
-//     let address = getById("profilAddress").value = "";
-//     let img = getById("profilPhoto").value = "";
-//     editProfil.innerHTML = `
-//         <tr><td><h3>Име: ${name}</h3></td></tr>
-//         <tr><td><p>Години: ${age}</p></td></tr>
-//         <tr><td><p>Адрес: ${address}</p></td></tr>
-//         <tr><td><p>Адрес: ${img}</p></td></tr>
-//         `
-// }
-
-// let registerProfil = getById("registerProfil");
-// registerProfil.addEventListener("keyup", function() {
-//     let buttonCreat = getById("creatProfilBtn");
-//     let name = getById("profilName").value.trim();
-//     let age = getById("profilAge").value.trim();
-//     let address = getById("profilAddress").value.trim();
-//     // проверка за съвпадение на двете пароли
-//     let img = getById("profilPhoto").value.trim();
-//     manager.checkProfil(name, age, address, img, buttonCreat);
-
-// });
-// let creatProfilBtn = getById("creatProfilBtn");
-// creatProfilBtn.addEventListener("click", function(ev) {
-//     ev.preventDefault();
-//     createProfil();
-// });
-// редактиране на профил
-// let editProfilBtn = document.getElementById("editProfilBtn");
-// editProfilBtn.addEventListener("click", function(ev) {
-//     ev.preventDefault();
-//     editProfil();
-
-// });
 
 // съзадаване на рецепта
 function submitRecepta() {
-    // let addReceptaBtn = getById("addReceptaBtn");
     let createReceptaForm = getByClass("createReceptaForm");
     let newRecepta = new Recepta(
         createReceptaForm[2].value.trim(),
@@ -222,8 +159,9 @@ function submitRecepta() {
         createReceptaForm[3].value.trim(),
         createReceptaForm[0].value.trim(),
     );
+    manager.addCreated(newRecepta);
     manager.add(newRecepta);
-    // manager.checkAddReceptaBtn(createReceptaForm, addReceptaBtn);
+
 }
 //Бутона остава не актвен докато не са запълнени всички полетата 
 let addReceptaBtn = getById("addReceptaBtn");

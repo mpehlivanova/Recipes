@@ -15,8 +15,6 @@ let regErrorPassText = getById("regErrorPass");
 let arrRegister = getByClass("register");
 
 let [regName, regAge, regAddress, pass1, pass2, url] = arrRegister;
-console.log(url);
-console.log(url.value);
 
 let loginDiv = getById("loginDiv");
 let myProfilPageDiv = getById("myProfilPage");
@@ -45,8 +43,8 @@ loginButton.addEventListener("click", function(ev) {
         if (userStorage.validadteUser(username, pass)) {
             errorPassLoginText.style.display = "none";
             registerPageDiv.style.display = "none";
-            myProfilPageDiv.style.display = "flex";
             loginDiv.style.display = "none";
+            myProfilPageDiv.style.display = "flex";
             headerImg.src = url.value;
             myProfilSrc.src = url.value;
 
@@ -86,7 +84,6 @@ createRegButton.addEventListener("click", function(ev) {
             let user = regName.value.trim();
             let pass = pass1.value.trim();
             userStorage.addUser(user, pass);
-            // check.clearInput(arrRegister);
             registerPageDiv.style.display = "none";
 
 

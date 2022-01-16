@@ -1,10 +1,24 @@
 class ManagerRecepti {
     constructor() {
         this.recepti = [];
+        this.created = [];
+        if (localStorage.getItem("creat")) {
+            this.created = JSON.parse(localStorage.getItem("creat"))
+        } else {
+            this.created = [
+                new Recepta("create", "create", "create", "create")
+            ];
+            localStorage.setItem("creat", JSON.stringify(this.created));
+        }
     }
     add(recepta) {
         if (this.recepti.indexOf(recepta) === -1) {
             this.recepti.push(recepta);
+        }
+    }
+    addCreated(recepta) {
+        if (this.created.indexOf(recepta) === -1) {
+            this.created.push(recepta);
         }
     }
     filter(text) {

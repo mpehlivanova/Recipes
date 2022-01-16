@@ -4,6 +4,7 @@ let create = getById("create");
 let profil = getById("myProfil");
 let error = getById("error");
 let allCard = getById("allCards");
+let conteinerCreatetRecept = getById("tableCookRecept")
 
 
 
@@ -50,7 +51,7 @@ function hasChangePage() {
             create.style.display = "none";
             profil.style.display = "flex";
             error.style.display = "none";
-
+            // printRecepti(userRecept.created, conteinerCreatetRecept)
             break;
         default:
             all.style.display = "flex";
@@ -58,7 +59,7 @@ function hasChangePage() {
             create.style.display = "none";
             profil.style.display = "none";
             error.style.display = "none";
-            printRecepti(manager.recepti, allCard)
+            printRecepti(manager.recepti, allCard);
             break;
 
     };

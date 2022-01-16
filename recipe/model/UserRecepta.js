@@ -10,7 +10,7 @@ class Recepta {
 }
 class UserRecept {
     constructor() {
-        // this.liked = [];
+
         if (localStorage.getItem("like")) {
             this.liked = JSON.parse(localStorage.getItem("like"))
         } else {
@@ -19,7 +19,7 @@ class UserRecept {
             ];
             localStorage.setItem("like", JSON.stringify(this.liked));
         }
-        // this.cooked = [];
+
         if (localStorage.getItem("cook")) {
             this.cooked = JSON.parse(localStorage.getItem("cook"))
         } else {
